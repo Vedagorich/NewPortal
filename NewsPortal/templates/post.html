@@ -1,0 +1,30 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+<!-- Название у нас будет Product -->
+{% block title %}
+post
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим все статьи -->
+{% block content %}
+<table style="height: 94px; width: 85.3693%; border-collapse: collapse; margin-left: auto; margin-right: auto;"
+       border="1">
+    <tbody>
+    <tr>
+        <td style="width: 100%; text-align: center;"><span style="text-decoration: underline;"><span
+                style="color: #ff0000; text-decoration: underline;"><h1>{{ post.post_name }}</h1></span></span></td>
+    </tr>
+    <tr>
+        <td style="width: 100%; text-align: left;"><h3>{{ post.post_text}}</h3></td>
+    </tr>
+    <tr>
+        <td style="width: 100%; text-align: right;"><h6>рейтинг статьи: {{ post.rating_post }}</h6></td>
+    </tr>
+    <tr>
+        <td style="width: 100%; text-align: right;"><h6>дата публикации: {{ post.time_post_add |date:'d M Y' }}</h6>
+        </td>
+    </tr>
+    </tbody>
+</table>
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'flatpages/default.html' %}
+
+<!-- Название у нас будет Posts -->
+{% block title %}
+Posts
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим все статьи -->
+{% block content %}
+   <h1>Общее количество статей: {{ post_name|length }}</h1>
+   <!-- Выводим статьи, только если они есть с помощью тега if -->
+   {% if post_name %}
+       <table style="border-collapse: collapse; width: 100%; height: 90px;" border="1">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 20%; height: 18px; text-align: center;"><strong>название</strong></td>
+<td style="width: 20%; height: 18px; text-align: center;"><strong>описание</strong></td>
+<td style="width: 20%; height: 18px; text-align: center;"><strong>автор</strong></td>
+<td style="width: 20%; height: 18px; text-align: center;"><strong>рейтинг</strong></td>
+<td style="width: 20%; height: 18px; text-align: center;"><strong>дата</strong></td>
+</tr>
+        {% for post in post_name %}
+           <tr>
+               <td>{{ post.post_name |truncatewords:3 }}</td>
+               <td>{{ post.post_text |truncatewords:10 }}</td>
+               <td>{{ post.author.full_name }}</td>
+               <td>{{ post.rating_post }}</td>
+               <td>{{ post.time_post_add |date:'d M Y'}}</td>
+           </tr>
+        {% endfor %}
+       </table>
+   {% else %}
+       <!-- Если статей нет, говорим, что статей нет ;) -->
+       <h2>Статей нет!</h2>
+   {% endif %}
+{% endblock content %}
