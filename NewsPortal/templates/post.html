@@ -1,5 +1,7 @@
 <!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
 {% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+{% load custom_tags %}
 
 <!-- Название у нас будет Product -->
 {% block title %}
@@ -13,10 +15,10 @@ post
     <tbody>
     <tr>
         <td style="width: 100%; text-align: center;"><span style="text-decoration: underline;"><span
-                style="color: #ff0000; text-decoration: underline;"><h1>{{ post.post_name }}</h1></span></span></td>
+                style="color: #ff0000; text-decoration: underline;"><h1>{{ post.post_name | censor_text }}</h1></span></span></td>
     </tr>
     <tr>
-        <td style="width: 100%; text-align: left;"><h3>{{ post.post_text}}</h3></td>
+        <td style="width: 100%; text-align: left;"><h3>{{ post.post_text | censor_text }}</h3></td>
     </tr>
     <tr>
         <td style="width: 100%; text-align: right;"><h6>рейтинг статьи: {{ post.rating_post }}</h6></td>

@@ -1,4 +1,6 @@
 {% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+{% load custom_tags %}
 
 <!-- Название у нас будет Posts -->
 {% block title %}
@@ -8,6 +10,7 @@ Posts
 <!-- В контенте на странице мы выводим все статьи -->
 {% block content %}
    <h1>Общее количество статей: {{ post_name|length }}</h1>
+    <h3>{% current_time '%b %d %Y %A' %}</h3>
    <!-- Выводим статьи, только если они есть с помощью тега if -->
    {% if post_name %}
        <table style="border-collapse: collapse; width: 100%; height: 90px;" border="1">
@@ -21,8 +24,8 @@ Posts
 </tr>
         {% for post in post_name %}
            <tr>
-               <td>{{ post.post_name |truncatewords:3 }}</td>
-               <td>{{ post.post_text |truncatewords:10 }}</td>
+               <td>{{ post.post_name | censor_text }}</td>
+               <td>{{ post.post_text |truncatewords:10 | censor_text }}</td>
                <td>{{ post.author.full_name }}</td>
                <td>{{ post.rating_post }}</td>
                <td>{{ post.time_post_add |date:'d M Y'}}</td>
