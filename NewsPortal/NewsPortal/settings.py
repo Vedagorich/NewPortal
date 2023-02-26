@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'fpages',
     'news',
     'accounts',
+    'django_filters',
+    'bootstrap_datepicker_plus',
 
 ]
 

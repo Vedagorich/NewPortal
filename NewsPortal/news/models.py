@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models import Sum
-
+from django.core.validators import MinValueValidator
+from django.urls import reverse
 
 class Author(models.Model):
     full_name = models.CharField(max_length=255)
@@ -53,6 +53,8 @@ class Post(models.Model):
     def preview(self):
         return f"{self.post_text[0:124]}..."
 
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[str(self.id)])
 
 class Post_Category(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
