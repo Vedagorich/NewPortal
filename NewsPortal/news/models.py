@@ -11,6 +11,9 @@ class Author(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
+    def __str__(self):
+        return self.full_name
+
     # def update_rating(self):
     #     self.rating = self.rating_post.all().aggregate(Sum('rating'))['rating__sum'] * 3 + \
     #                   self.rating_comment.all().aggregate(Sum('rating'))['rating__sum'] + \
@@ -20,6 +23,9 @@ class Author(models.Model):
 
 class Category(models.Model):
     category_name = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.category_name
 
 
 class Post(models.Model):

@@ -11,11 +11,11 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['post_name','post_text','post_news','author',]
-        label = {
-            'post_name': 'Название',
-            'post_text': 'Текст',
-            'post_news': 'Категория',
-            'author': 'Автор',
+        labels = {
+            'post_name': 'Создайте заголовок',
+            'post_text': 'Введите текст',
+            'post_news': 'Выберите категории',
+            'author': 'Выберите автора',
         }
 
     def clean(self):
