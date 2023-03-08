@@ -1,10 +1,11 @@
-# Импортируем класс, который говорит нам о том,
-# что в этом представлении мы будем выводить список объектов из БД
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from .filters import PostFilter
-from .forms import PostForm
+from django.shortcuts import render
+from django.views.generic import UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
+from .forms import PostForm
 
 
 class PostList(ListView):
@@ -59,10 +60,13 @@ class PostCreate(CreateView):
 
 
 # Добавляем представление для изменения товара.
-class PostUpdate(UpdateView):
+class PostUpdate(LoginRequiredMixin, UpdateView):
     form_class = PostForm
     model = Post
     template_name = 'post_edit.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {'form': self.form_class})
 
 
 # Представление удаляющее статью.
