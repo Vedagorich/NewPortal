@@ -21,11 +21,27 @@ class Author(models.Model):
 
 
 class Category(models.Model):
-    category_name = models.CharField(max_length=255, unique=True)
-    subscribers = models.ManyToManyField(User, through='CategorySubscriber')
-    def __str__(self):
-        return self.category_name
+    # category_name = models.CharField(max_length=255, unique=True)
+    # subscribers = models.ManyToManyField(User, through='CategorySubscriber')
+    # def __str__(self):
+    #     return self.category_name
+    sport = 'SP'
+    politics = 'PO'
+    education = 'ED'
+    weather = 'WE'
 
+    CATEGORY_TYPES = [
+        (sport, 'Спорт'),
+        (politics, 'Политика'),
+        (education, 'Образование'),
+        (weather, 'Погода'),
+    ]
+
+    category_name = models.CharField(max_length=2, choices=CATEGORY_TYPES, default=sport, unique=True)
+    subscribers = models.ManyToManyField(User, through='CategorySubscriber')
+
+    def __str__(self):
+        return self.get_category_name_display()
 
 class CategorySubscriber(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)

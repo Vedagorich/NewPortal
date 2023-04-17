@@ -6,7 +6,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from NewsPortal import settings
 from NewsPortal.settings import SITE_URL
-from news.models import Post, Category
+from .models import Post, Category
 
 
 @shared_task
