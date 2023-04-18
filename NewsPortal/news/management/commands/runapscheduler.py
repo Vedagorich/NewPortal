@@ -7,14 +7,9 @@ from apscheduler.triggers.cron import CronTrigger
 from django.core.management.base import BaseCommand
 from django_apscheduler.jobstores import DjangoJobStore
 from django_apscheduler.models import DjangoJobExecution
+from NewsPortal.news.tasks import send_weekly_notifications
 
 logger = logging.getLogger(__name__)
-
-
-# наша задача по выводу текста на экран
-def my_job():
-    #  Your job processing logic here...
-    print('hello from job')
 
 
 # функция, которая будет удалять неактуальные задачи
@@ -32,14 +27,14 @@ class Command(BaseCommand):
 
         # добавляем работу нашему задачнику
         scheduler.add_job(
-            my_job,
-            trigger=CronTrigger(second="*/10"),
+            send_weekly_notifications,
+            trigger=CronTrigger(week="*"),
             # То же, что и интервал, но задача тригера таким образом более понятна django
-            id="my_job",  # уникальный айди
+            id="send_weekly_notifications",  # уникальный айди
             max_instances=1,
             replace_existing=True,
         )
-        logger.info("Added job 'my_job'.")
+        logger.info("Added job 'send_weekly_notifications'.")
 
         scheduler.add_job(
             delete_old_job_executions,

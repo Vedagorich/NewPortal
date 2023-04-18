@@ -1,21 +1,23 @@
 from django import forms
-from .models import Post
+from .models import Post, Category, Author
 from django.core.exceptions import ValidationError
 
 
 
 
 class PostForm(forms.ModelForm):
-    post_text = forms.CharField(min_length=20)
+    post_text = forms.CharField(min_length=2000)
+    category = forms.ModelMultipleChoiceField(queryset=Category.objects.all())
 
     class Meta:
         model = Post
-        fields = ['post_name','post_text','post_news','author',]
+        fields = ['post_name','post_text','post_news','author', 'category', ]
         labels = {
             'post_name': 'Создайте заголовок',
             'post_text': 'Введите текст',
-            'post_news': 'Выберите категории',
+            'post_news': 'Выберите тип',
             'author': 'Выберите автора',
+            'category': 'Выберите категорию',
         }
 
     def clean(self):

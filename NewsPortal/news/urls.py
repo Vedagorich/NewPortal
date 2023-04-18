@@ -1,6 +1,6 @@
 from django.urls import path
 # Импортируем созданное нами представление
-from .views import PostList, PostDetail, PostCreate, PostUpdate, PostDelete, PostSearch
+from .views import PostList, PostDetail, PostCreate, PostUpdate, PostDelete, PostSearch, HelloView
 
 urlpatterns = [
     # path — означает путь.
@@ -9,8 +9,7 @@ urlpatterns = [
     # Т.к. наше объявленное представление является классом,
     # а Django ожидает функцию, нам надо представить этот класс в виде view.
     # Для этого вызываем метод as_view.
-    path('', PostList.as_view()),
-    # pk — это первичный ключ автора, который будет выводиться у нас в шаблон
+    # Pk — это первичный ключ автора, который будет выводиться у нас в шаблон
     # int — указывает на то, что принимаются только целочисленные значения
     path('', PostList.as_view(), name='post_list'),
     path('<int:pk>', PostDetail.as_view(), name='post_detail'),
@@ -20,4 +19,6 @@ urlpatterns = [
     path('search/', PostSearch.as_view(), name='post_list'),
 
 
+    path('', HelloView.as_view()),
 ]
+

@@ -4,10 +4,13 @@ from celery import shared_task
 from django.contrib.sites.models import Site
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
-from NewsPortal import settings
-from NewsPortal.settings import SITE_URL
 from .models import Post, Category
 
+
+#from NewsPortal.NewsPortal import settings
+
+SITE_URL = 'http://127.0.0.1:8000/'
+DEFAULT_FROM_EMAIL = 'yas.taras@mail.ru'
 
 @shared_task
 def hello():
@@ -28,7 +31,7 @@ def send_notifications(preview, pk, title, subscribers):
     msg = EmailMultiAlternatives(
         subject=title,
         body='',
-        from_email=settings.DEFAULT_FROM_EMAIL,
+        from_email= DEFAULT_FROM_EMAIL,
         to=subscribers,
     )
 
@@ -55,7 +58,7 @@ def send_weekly_notifications():
             msg = EmailMultiAlternatives(
                 subject=subject,
                 body='',
-                from_email=settings.DEFAULT_FROM_EMAIL,
+                from_email=DEFAULT_FROM_EMAIL,
                 to=[s.email for s in subscribers],
             )
             msg.attach_alternative(html_context, 'text/html')

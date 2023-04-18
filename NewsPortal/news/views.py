@@ -6,6 +6,15 @@ from django.views.generic import UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
 from .forms import PostForm
+from django.http import HttpResponse
+from django.views import View
+from .tasks import hello
+
+
+class HelloView(View):
+    def get(self, request):
+        hello.delay()
+        return HttpResponse('Hello!')
 
 
 class PostList(ListView):
@@ -115,3 +124,5 @@ class PostSearch(ListView):
         kwargs = super().get_filterset_kwargs(filterset_class)
         kwargs['data'] = self.request.GET
         return kwargs
+
+
