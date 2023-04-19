@@ -2,13 +2,19 @@
 {% load custom_filters %}
 {% load custom_tags %}
 
+
+{% load cache %}
+{% cache 30 content %}
 <!-- Название у нас будет Posts -->
 {% block title %}
 Posts
 {% endblock title %}
+{% endcache %}
 
-<!-- В контенте на странице мы выводим все статьи -->
+
+
 {% block content %}
+
    <h1>Общее количество статей: {{ post_name|length }}</h1>
     <h3>{% current_time '%b %d %Y %A' %}</h3>
 

@@ -11,6 +11,7 @@ from django.views import View
 from .tasks import hello
 
 
+
 class HelloView(View):
     def get(self, request):
         hello.delay()
@@ -51,11 +52,9 @@ class PostList(ListView):
 
 
 class PostDetail(DetailView):
-    # Модель всё та же, но мы хотим получать информацию по отдельному товару
+    # Модель всё та же, но мы хотим получать информацию по отдельной статье
     model = Post
-    # Используем другой шаблон — product.html
     template_name = 'post.html'
-    # Название объекта, в котором будет выбранный пользователем продукт
     context_object_name = 'post'
 
 
