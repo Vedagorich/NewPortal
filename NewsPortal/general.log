@@ -1,0 +1,18 @@
+2023-05-03 12:28:27,152 - INFO - logging_config - Info message
+2023-05-03 12:28:27,152 - WARNING - logging_config - Warning message
+2023-05-03 12:28:27,152 - ERROR - logging_config - Error message
+NoneType: None
+2023-05-03 12:28:27,152 - CRITICAL - logging_config - Critical message
+NoneType: None
+2023-05-03 12:29:00,297 - INFO - logging_config - Info message
+2023-05-03 12:29:00,297 - WARNING - logging_config - Warning message
+2023-05-03 12:29:00,297 - ERROR - logging_config - Error message
+NoneType: None
+2023-05-03 12:29:00,297 - CRITICAL - logging_config - Critical message
+NoneType: None
+2023-05-03 09:29:00,953 - INFO - logging_config - Info message
+2023-05-03 09:29:00,953 - WARNING - logging_config - Warning message
+2023-05-03 09:29:00,953 - ERROR - logging_config - Error message
+NoneType: None
+2023-05-03 09:29:00,953 - CRITICAL - logging_config - Critical message
+NoneType: None

@@ -1,0 +1,12 @@
+2023-05-03 12:28:27,152 - ERROR - Error message - /home/vedagorich/PycharmProjects/NewPortal/NewsPortal/NewsPortal/logging_config.py - (None, None, None)
+NoneType: None
+2023-05-03 12:28:27,152 - CRITICAL - Critical message - /home/vedagorich/PycharmProjects/NewPortal/NewsPortal/NewsPortal/logging_config.py - (None, None, None)
+NoneType: None
+2023-05-03 12:29:00,297 - ERROR - Error message - /home/vedagorich/PycharmProjects/NewPortal/NewsPortal/NewsPortal/logging_config.py - (None, None, None)
+NoneType: None
+2023-05-03 12:29:00,297 - CRITICAL - Critical message - /home/vedagorich/PycharmProjects/NewPortal/NewsPortal/NewsPortal/logging_config.py - (None, None, None)
+NoneType: None
+2023-05-03 09:29:00,953 - ERROR - Error message - /home/vedagorich/PycharmProjects/NewPortal/NewsPortal/NewsPortal/logging_config.py - (None, None, None)
+NoneType: None
+2023-05-03 09:29:00,953 - CRITICAL - Critical message - /home/vedagorich/PycharmProjects/NewPortal/NewsPortal/NewsPortal/logging_config.py - (None, None, None)
+NoneType: None
